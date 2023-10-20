@@ -4,6 +4,93 @@ import org.junit.Test;
 public class Tester 
 {
     @Test
+    private static void test_name()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getName().getClass().getName());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("name is not a string!!");
+        }
+    }
+
+    @Test
+    private static void test_email()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getEmail().getClass().getName());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("email is not a string!!");
+        }
+    }
+
+
+        @Test
+    private static void test_address()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getAddress().getClass().getName());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("address is not a string!!");
+        }
+    }
+
+        @Test
+    private static void test_job()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getJobs().getClass().getName());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("job is not a string!!");
+        }
+    }
+
+
+    @Test
+    private static void test_edu()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getEducation().getClass().getName());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("educaiton is not a string!!");
+        }
+    }
+
+      @Test
+    private static void test_number()
+    {
+      DataEntry obj = new DataEntry();
+        try 
+        {
+            assertEquals("java.lang.String", obj.getPhoneNumber());
+        }
+        catch(AssertionError e)
+        {
+            System.out.println("name is not a string!!");
+        }
+    }
+
+
+    @Test
     private static void test1()
     {
         try 
@@ -15,6 +102,8 @@ public class Tester
             System.out.println("Error!!");
         }
     }
+
+
 
     public static void main(String[] args)
     {
