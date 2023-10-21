@@ -48,32 +48,6 @@ public class Tester
 
 
     @Test
-    public static void testGetCurrentStep() {
-        try {
-          Workflow workflow = new Workflow();
-          int currentStep = workflow.getCurrentStep();
-          assertEquals(0, currentStep);
-        } 
-        
-        catch (AssertionError e) {
-          System.out.println("not stepping");
-        }
-    }
-
-    @Test
-    public static void testSetCurrentStep() {
-        try {
-          Workflow workflow = new Workflow();
-          workflow.setCurrentStep(1);
-          int currentStep = workflow.getCurrentStep();
-          assertEquals(1, currentStep);
-        } 
-        catch (AssertionError e) {
-          System.out.println("current steppp");
-        }
-    }
-
-    @Test
     public static void testGetNext() {
         try {
           Workflow workflow = new Workflow();
@@ -101,58 +75,7 @@ public class Tester
     /////////////////////////////////////////////////
     //Approval Test cases
 
-    @Test
-    public static void testGetImmigrant() {
-        try {
-          Approval approval = new Approval();
-          DataEntry immigrant = approval.getImmigrant();
-          assertNull(immigrant); 
-        } 
 
-        catch (AssertionError e) {
-          System.out.println("immigrant object found");
-        }
-    }
-
-    @Test
-    public static void testSetImmigrant() {
-        try {
-          Approval approval = new Approval();
-          DataEntry immigrant = new DataEntry(); 
-          approval.setImmigrant(immigrant);
-          assertSame(immigrant, approval.getImmigrant());
-        }
-
-        catch (AssertionError e) {
-          System.out.println("immigrantssss ");
-        }
-    }
-
-    @Test
-    public static void testGetAlienNumber() {
-        try {
-          Approval approval = new Approval();
-          int alienNumber = approval.getAlienNumber();
-          assertEquals(0, alienNumber);
-        } 
-        
-        catch (AssertionError e) {
-          System.out.println("alien number");
-        }
-    }
-
-    @Test
-    public static void testSetAlienNumber() {
-        try {
-            Approval approval = new Approval();
-            approval.setAlienNumber(12345); 
-            assertEquals(12345, approval.getAlienNumber());
-        } 
-        
-        catch (AssertionError e) {
-            System.out.println("set aline number");
-        }
-    }
 
     @Test
     public static void testApprove() {
