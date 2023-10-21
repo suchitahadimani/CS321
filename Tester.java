@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.beans.Transient;
+
 public class Tester 
 {
 
@@ -380,7 +382,16 @@ public class Tester
         }
     }
 
-
+    /*
+     * @author Sadhana Mallemudi
+     */
+    @Test
+    @DisplayName("The tracking number is not valid")
+    public static void testGenerateTrackingNum(){
+      Business immigrant = new Business();
+      int num = immigrant.generateTrackingNumber(immigrant);
+      Assertions.assertEquals(0, num);
+    }
 
     public static void main(String[] args)
     {
