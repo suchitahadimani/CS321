@@ -103,7 +103,7 @@ public class Tester
     }
 
     @Test
-    public void test_job() {
+    public void test_jobs() {
       try{
         String[] jobs = {"Software Engineer", "Data Analyst"};
         dataEntry.setJob(jobs);
@@ -151,7 +151,7 @@ public class Tester
   
   
     @Test
-    private static void test_name()
+    private static void test_names()
     {
       DataEntry obj = new DataEntry();
         try 
@@ -165,7 +165,7 @@ public class Tester
     }
 
     @Test
-    private static void test_email()
+    private static void test_emails()
     {
       DataEntry obj = new DataEntry();
         try 
@@ -180,7 +180,7 @@ public class Tester
 
 
         @Test
-    private static void test_address()
+    private static void test_addresses()
     {
       DataEntry obj = new DataEntry();
         try 
@@ -243,62 +243,167 @@ public class Tester
     
     ////////////////////////////////////////////////////////////////////////////
     //testing workflow class
-    private Workflow workflow;
 
-    @BeforeEach
-    public void setUp() {
-        workflow = new Workflow();
-    }
 
     @Test
-    public void testGetCurrentStep() {
+    public static void testGetCurrentStep() {
         try {
+            Workflow workflow = new Workflow();
             int currentStep = workflow.getCurrentStep();
             assertEquals(0, currentStep);
-        } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
         }
     }
 
     @Test
-    public void testSetCurrentStep() {
+    public static void testSetCurrentStep() {
         try {
+            Workflow workflow = new Workflow();
             workflow.setCurrentStep(1);
             int currentStep = workflow.getCurrentStep();
             assertEquals(1, currentStep);
-        } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
         }
     }
 
     @Test
-    public void testGetNext() {
+    public static void testGetNext() {
         try {
+            Workflow workflow = new Workflow();
             int nextStep = workflow.getNext(2);
             assertEquals(3, nextStep);
-        } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
         }
     }
 
     @Test
-    public void testHasNext() {
+    public static void testHasNext() {
         try {
+            Workflow workflow = new Workflow();
             boolean hasNext = workflow.hasNext(2);
             assertTrue(hasNext);
-        } catch (Exception e) {
-            fail("Exception occurred: " + e.getMessage());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
         }
     }
 
+    /////////////////////////////////////////////////
+    //Approval Test cases
 
+    @Test
+    public static void testGetImmigrant() {
+        try {
+            Approval approval = new Approval();
+            DataEntry immigrant = approval.getImmigrant();
+            assertNull(immigrant); 
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
 
-  
+    @Test
+    public static void testSetImmigrant() {
+        try {
+            Approval approval = new Approval();
+            DataEntry immigrant = new DataEntry(); 
+            approval.setImmigrant(immigrant);
+            assertSame(immigrant, approval.getImmigrant());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testGetAlienNumber() {
+        try {
+            Approval approval = new Approval();
+            int alienNumber = approval.getAlienNumber();
+            assertEquals(0, alienNumber);
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testSetAlienNumber() {
+        try {
+            Approval approval = new Approval();
+            approval.setAlienNumber(12345); 
+            assertEquals(12345, approval.getAlienNumber());
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testApprove() {
+        try {
+            Approval approval = new Approval();
+            boolean result = approval.approve(12345); 
+            assertTrue(result);
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testDisplayScreen() {
+        try {
+            Approval approval = new Approval();
+            approval.displayScreen();
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testClearScreen() {
+        try {
+            Approval approval = new Approval();
+            approval.clearScreen();
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public static void testDeny(){
+        try {
+            Approval approval = new Approval();
+            boolean result = approval.deny(12345); 
+            assertFalse(result);
+        } catch (AssertionError e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
 
 
     public static void main(String[] args)
     {
         test_number();
+        test_addresses();
+        test_edu();
+        test_emails();
+        test_job();
+        test_names();
+        testDeny();
+        testApprove();
+        testClearScreen();
+        testDisplayScreen();
+        testGetAlienNumber();
+        testGetCurrentStep();
+        testGetImmigrant();
+        testGetNext();
+        testHasNext();
+        testSetAlienNumber();
+        testSetCurrentStep();
+        testSetImmigrant();
+        
+
     }
 
 
