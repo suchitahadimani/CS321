@@ -386,12 +386,54 @@ public class Tester
      * @author Sadhana Mallemudi
      */
     @Test
-    @DisplayName("The tracking number is not valid")
+    @DisplayName("Test Immigrant")
+    public static void testImmigrant(){
+      Business immigrant = new Business();
+      Assertions.assertNotNull(immigrant);
+    }
+    @Test
+    @DisplayName("Test Tracking Number")
     public static void testGenerateTrackingNum(){
       Business immigrant = new Business();
       int num = immigrant.generateTrackingNumber(immigrant);
       Assertions.assertEquals(0, num);
     }
+    @Test
+    @DisplayName("Test if it's added to database")
+    public static void testDatabaseAdded(){
+      Business immigrant = new Business();
+      boolean check = immigrant.addToDatabase(immigrant);
+      Assertions.assertEquals(false, check);
+    }
+    @Test
+    @DisplayName("Test if able to retrieve from database")
+    public static void testRetrieveFromDatabase(){
+      Business immigrant = new Business();
+      boolean check = immigrant.retrieveFromDatabase(immigrant);
+      Assertions.assertEquals(false, check);
+    }
+    @Test
+    @DisplayName("Test for approval status")
+    public static void testApprovalStatus(){
+      Business immigrant = new Business();
+      boolean check = immigrant.getApprovalStatus(immigrant);
+      Assertions.assertEquals(false, check);
+    }
+    @Test
+    @DisplayName("Test for approval email")
+    public static void testApprovalEmail(){
+      Business immigrant = new Business();
+      boolean check = immigrant.sendApprovalEmail(immigrant);
+      Assertions.assertEquals(false, check);
+    }
+    @Test
+    @DisplayName("Test for denial email")
+    public static void testDenialEmail(){
+      Business immigrant = new Business();
+      boolean check = immigrant.sendDenialEmail(immigrant);
+      Assertions.assertEquals(false, check);
+    }
+
 
     public static void main(String[] args)
     {
