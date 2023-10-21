@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Tester 
 {
 
+    ////////////////////////////////////////////////////////////////////////////
     //Data Entry test functions
+
     private DataEntry dataEntry;
 
     @BeforeEach
@@ -237,112 +239,69 @@ public class Tester
         {
             System.out.println("name is not a string!!");
         }
-    }
 
+    
+    ////////////////////////////////////////////////////////////////////////////
+    //testing workflow class
+    private Workflow workflow;
+
+    @BeforeEach
+    public void setUp() {
+        workflow = new Workflow();
+    }
 
     @Test
-    private static void test1()
-    {
-        try 
-        {
-            assertEquals("It Works!", "helelo", "hello");
-        }
-        catch(AssertionError e)
-        {
-            System.out.println("Error!!");
+    public void testGetCurrentStep() {
+        try {
+            int currentStep = workflow.getCurrentStep();
+            assertEquals(0, currentStep);
+        } catch (Exception e) {
+            fail("Exception occurred: " + e.getMessage());
         }
     }
 
+    @Test
+    public void testSetCurrentStep() {
+        try {
+            workflow.setCurrentStep(1);
+            int currentStep = workflow.getCurrentStep();
+            assertEquals(1, currentStep);
+        } catch (Exception e) {
+            fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testGetNext() {
+        try {
+            int nextStep = workflow.getNext(2);
+            assertEquals(3, nextStep);
+        } catch (Exception e) {
+            fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testHasNext() {
+        try {
+            boolean hasNext = workflow.hasNext(2);
+            assertTrue(hasNext);
+        } catch (Exception e) {
+            fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+
+
+  
 
 
     public static void main(String[] args)
     {
-        test1();
+        test_number();
     }
 
 
 
-/*
-import org.junit.*;
-import static org.junit.Assert.*;
-import org.junit.rules.ExpectedException;
-import java.io.File;
-import java.util.Iterator;
-
-public class Tester {
-  private String errorMessage1 = "iterator returns incorrect element";
-  private String errorMessage2 = "Iterator crashed. Maybe because of a file I/O error or an incorrect number of iterations";
-  
- 
-
-    // double for-loop that doesn't skip anything
-  @Test(timeout=1000)
-  private static void test()
-  {
-        try 
-        {
-          assertEquals("It Works!", "helelo", "hello");
-        }
-        catch(AssertionError e)
-        {
-            System.out.println("Error!!");
-        }
-
-  }
-
-   public static void main(String args[]){
-    //org.junit.runner.JUnitCore.main("Tester");
-    test();
-  }
-
-  
-  // double for-loop that doesn't skip anything
-  @Test(timeout=1000)
-  public void test_1()
-  {
-    String[] expected = {"w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15", "w1", "w2", "w3", "w4", "veritas", "w6", "w7", "w8", "w9", "moribus", "w11", "inmaturitas", "w13", "w14", "w15", "malignus", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "veritas", "w2", "w3", "w4", "w5", "moribus", "w7", "inmaturitas", "malignus", "w10", "w11", "w12", "w13", "w14"};
-    try
-    {
-      File fp = new File("test1.dat");
-      ReviewList list = new ReviewList(fp);
-      int index = 0;
-      for (Review r : list)
-          for (String s : r)
-              assertEquals(errorMessage1, expected[index++], s);
-    }
-    catch(Exception e)
-    {
-      fail(errorMessage2);
-    }
-  }
-
-  // double while-loop that doesn't skip anything
-  @Test(timeout=1000)
-  public void test_2()
-  {
-    String[] expected = {"w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w12", "w13", "w14", "w15", "w1", "w2", "w3", "w4", "veritas", "w6", "w7", "w8", "w9", "moribus", "w11", "inmaturitas", "w13", "w14", "w15", "malignus", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "w11", "w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9", "w10", "veritas", "w2", "w3", "w4", "w5", "moribus", "w7", "inmaturitas", "malignus", "w10", "w11", "w12", "w13", "w14"};
-    try
-    {
-      File fp = new File("test1.dat");
-      ReviewList list = new ReviewList(fp);
-      int index = 0;
-      Iterator<Review> it1 = list.iterator();
-      while(it1.hasNext())
-      {
-          Review r = it1.next();
-          Iterator<String> it2 = r.iterator(false);
-          while(it2.hasNext())
-              assertEquals(errorMessage1, expected[index++], it2.next());
-      }
-    }
-    catch(Exception e)
-    {
-      fail(errorMessage2);
-    }
-  }
-
-  }
-
-  */
 
 }
