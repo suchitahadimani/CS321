@@ -22,10 +22,12 @@ public class Approval {
         return true;
     }
 
-    public void displayScreen() {
+    public boolean displayScreen() {
+        return true;
     }
 
-    public void clearScreen() {
+    public boolean clearScreen() {
+        return true;
     }
 
     public boolean deny(int alienNumber) {

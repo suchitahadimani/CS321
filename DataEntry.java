@@ -91,13 +91,13 @@ public class DataEntry {
         this.files = files;
     }
 
-    void submit(){
-
+    boolean submit(){
+        return true;
     }
 
 
-    void displayScreen(){
-
+    boolean displayScreen(){
+        return true;
     }
 
 
