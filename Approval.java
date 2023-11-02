@@ -124,6 +124,7 @@ public class Approval {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public boolean displayScreen() {
         return true;
     }
@@ -132,6 +133,8 @@ public class Approval {
         return true;
     }
 
+=======
+>>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
 =======
 >>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
     public boolean deny(int alienNumber) {
