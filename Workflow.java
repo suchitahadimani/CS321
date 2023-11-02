@@ -10,6 +10,7 @@ public class Workflow {
     }
 
     public int getNext(int currentStep) {
+        //until we giure out how to implement this
         return currentStep + 1;
     }
 
