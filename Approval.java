@@ -1,102 +1,85 @@
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class Approval {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public Approval(){
+        JFrame frame= new JFrame("Matching Game");
+        JPanel panel = new JPanel();
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Account Creation");
-        Text scenetitle = new Text("Welcome! Get started on making your account!");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        panel.setLayout(new GridLayout(9,2));
 
 
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        JLabel l_firstname = new JLabel("First Name:");
+        JLabel l_lastname = new JLabel("Last Name:");
+        JLabel l_dob = new JLabel("Date of birth:");
+        JLabel l_address = new JLabel("Address:");
+        JLabel l_city = new JLabel("City:");
+        JLabel l_state = new JLabel("State:");
+        JLabel l_zipcode = new JLabel("Zip-Code:");
+        JLabel l_email = new JLabel("Email:");
+        JLabel l_phone_number = new JLabel("Phone Number:");
 
-        Scene scene = new Scene(grid, 300, 275);
-        primaryStage.setScene(scene);
-
-
-        Label firstname = new Label("First Name:");
-        Label lastname = new Label("Last Name:");
-        Label dob = new Label("Date of birth:");
-        Label address = new Label("Address:");
-        Label city = new Label("City:");
-        Label state = new Label("State:");
-        Label zipcode = new Label("Zip-Code:");
-        Label email = new Label("Email:");
-        Label phone_number = new Label("Phone Number:");
-
-        grid.add(firstname, 0, 1);
-        grid.add(lastname, 0, 2);      
-        grid.add(dob, 0, 3);                          
-        grid.add(address, 0, )4;                                   
-        grid.add(city, 0, );                                    
-        grid.add(state, 0, 5);                                    
-        grid.add(zipcode, 0, 6);                                    
-        grid.add(email, 0, 7);                                   
-        grid.add(phone_number, 0, 8);
+       
 
 
-        Label education = new Label("Enter highest education completed:");
-        Label job = new Label("List of Job:");
-        Label documents = new Label("Upload identification documents:");
+        //Label education = new Label("Enter highest education completed:");
+        //Label job = new Label("List of Job:");
+        //Label documents = new Label("Upload identification documents:");
 
 
-        Label tf_firstname = new Label("First Name:");
-        Label tf_lastname = new Label("Last Name:");
-        Label tf_address = new Label("Address:");
-        Label tf_city = new Label("City:");
-        Label tf_state = new Label("State:");
-        Label tf_zipcode = new Label("Zip-Code:");
-        Label tf_email = new Label("Email:");
+        JLabel tf_firstname = new JLabel("First Name:");
+        JLabel tf_lastname = new JLabel("Last Name:");
+        JLabel tf_address = new JLabel("Address:");
+        JLabel tf_city = new JLabel("City:");
+        JLabel tf_state = new JLabel("State:");
+        JLabel tf_zipcode = new JLabel("Zip-Code:");
+        JLabel tf_email = new JLabel("Email:");
 
-        grid.add(tf_firstname, 1, 1);
-        grid.add(tf_astname, 1, 2);              
-        grid.add(tf_dob, 1, 3);                              
-        grid.add(tf_address, 1, )4;                                    
-        grid.add(tf_city, 1, );                                   
-        grid.add(tf_state, 1, 5);                                   
-        grid.add(tf_zipcode, 1, 6);                                    
-        grid.add(tf_email, 1, 7);                                    
-        grid.add(tf_phone_number, 1, 8);
+        panel.add(l_firstname);
+        panel.add(tf_firstname);
+
+        panel.add(l_lastname);
+        panel.add(tf_lastname);
+
+                                 
+        panel.add(l_address);
+        panel.add(tf_address);
+
+        panel.add(l_city); 
+        panel.add(tf_city);
+
+        panel.add(l_state); 
+        panel.add(tf_state); 
+
+        panel.add(l_zipcode); 
+        panel.add(tf_zipcode); 
+
+        panel.add(l_email);                                                                
+        panel.add(tf_email);                                    
+
 
 
         Button approve = new Button("APPROVE");
-        approve.setOnAction(e -> {
-            approve.setFill(Color.FIREBRICK);
-            System.out.println("Button Clicked!");
-        });
+        //approve.setOnAction(e -> {
+        //    approve.setFill(Color.FIREBRICK);
+        //    System.out.println("Button Clicked!");
+        //});
 
         Button deny = new Button("DENY");
-        deny.setOnAction(e -> {
-            deny.setFill(Color.FIREBRICK);
-            System.out.println("Button Clicked!");
-        });
+        //deny.setOnAction(e -> {
+        //    deny.setFill(Color.FIREBRICK);
+        //    System.out.println("Button Clicked!");
+        //});
+//
 
+        panel.add(approve);
+        panel.add(deny);
 
-        grid.add(approve);
-        grid.add(deny);
-
-        Scene scene = new Scene(grid, 300, 200);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        frame.add(panel, BorderLayout.CENTER);
+        frame.setSize(500,500);
+        frame.setVisible(true);
     }
 
     
@@ -123,20 +106,6 @@ public class Approval {
         return true;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public boolean displayScreen() {
-        return true;
-    }
-
-    public boolean clearScreen() {
-        return true;
-    }
-
-=======
->>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
-=======
->>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
     public boolean deny(int alienNumber) {
         return false;
     }

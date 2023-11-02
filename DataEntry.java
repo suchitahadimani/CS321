@@ -1,20 +1,14 @@
-
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 
 import java.io.File;
 
-public class DataEntry extends Application{
+public class DataEntry extends JFrame{
 
     private String firstname;
     private String lastname;
-    private String address;
     private String email;
     private String address;
     private String city;
@@ -27,106 +21,73 @@ public class DataEntry extends Application{
     private File[] files;       
     
     //to launch application
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public DataEntry() {
+        JFrame frame= new JFrame("Matching Game");
+        JPanel panel = new JPanel();
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Account Creation");
-        Text scenetitle = new Text("Welcome! Get started on making your account!");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        panel.setLayout(new GridLayout(9,2));
 
 
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-
-        Scene scene = new Scene(grid, 300, 275);
-        primaryStage.setScene(scene);
-
-
-        Label l_firstname = new Label("First Name:");
-        Label l_lastname = new Label("Last Name:");
-        Label l_dob = new Label("Date of birth:");
-        Label l_address = new Label("Address:");
-        Label l_city = new Label("City:");
-        Label l_state = new Label("State:");
-        Label l_zipcode = new Label("Zip-Code:");
-        Label l_email = new Label("Email:");
-        Label l_phone_number = new Label("Phone Number:");
-
-        grid.add(l_firstname, 0, 1);
-        grid.add(l_lastname, 0, 2);      
-        grid.add(l_dob, 0, 3);                          
-        grid.add(l_address, 0, )4;                                   
-        grid.add(l_city, 0, );                                    
-        grid.add(l_state, 0, 5);                                    
-        grid.add(l_zipcode, 0, 6);                                    
-        grid.add(l_email, 0, 7);                                   
-        grid.add(l_phone_number, 0, 8);
+        JLabel l_firstname = new JLabel("First Name:");
+        JLabel l_lastname = new JLabel("Last Name:");
+        JLabel l_dob = new JLabel("Date of birth:");
+        JLabel l_address = new JLabel("Address:");
+        JLabel l_city = new JLabel("City:");
+        JLabel l_state = new JLabel("State:");
+        JLabel l_zipcode = new JLabel("Zip-Code:");
+        JLabel l_email = new JLabel("Email:");
+        JLabel l_phone_number = new JLabel("Phone Number:");
 
 
-        Label education = new Label("Enter highest education completed:");
-        Label job = new Label("List of Job:");
-        Label documents = new Label("Upload identification documents:");
+        //Label education = new Label("Enter highest education completed:");
+        //Label job = new Label("List of Job:");
+        //Label documents = new Label("Upload identification documents:");
 
 
-        TextField tf_firstname = new TextField("First Name:");
-        TextField tf_lastname = new TextField("Last Name:");
-        TextField tf_address = new TextField("Address:");
-        TextField tf_city = new TextField("City:");
-        TextField tf_state = new TextField("State:");
-        TextField tf_zipcode = new TextField("Zip-Code:");
-        TextField tf_email = new TextField("Email:");
+        JTextField tf_firstname = new JTextField("First Name:");
+        JTextField tf_lastname = new JTextField("Last Name:");
+        JTextField tf_address = new JTextField("Address:");
+        JTextField tf_city = new JTextField("City:");
+        JTextField tf_state = new JTextField("State:");
+        JTextField tf_zipcode = new JTextField("Zip-Code:");
+        JTextField tf_email = new JTextField("Email:");
 
-        grid.add(tf_firstname, 1, 1);
-        grid.add(tf_astname, 1, 2);              
-        grid.add(tf_dob, 1, 3);                              
-        grid.add(tf_address, 1, )4;                                    
-        grid.add(tf_city, 1, );                                   
-        grid.add(tf_state, 1, 5);                                   
-        grid.add(tf_zipcode, 1, 6);                                    
-        grid.add(tf_email, 1, 7);                                    
-        grid.add(tf_phone_number, 1, 8);
+        panel.add(l_firstname);
+        panel.add(tf_firstname);
 
+        panel.add(l_lastname);
+        panel.add(tf_lastname);
 
+                                 
+        panel.add(l_address);
+        panel.add(tf_address);
 
+        panel.add(l_city); 
+        panel.add(tf_city);
 
+        panel.add(l_state); 
+        panel.add(tf_state); 
 
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 10);
+        panel.add(l_zipcode); 
+        panel.add(tf_zipcode); 
 
-        PasswordField pwBox = new PasswordField();
-        grid.add(pwBox, 1, 10);
-
-
-
-        Button btn = new Button("SUBMIT");
-        btn.setOnAction(e -> {
-            btn.setFill(Color.YELLOW);
-            System.out.println("Button Clicked!");
-            setFirstName(l_firstname.getText());
-            setLastName(l_lastname.getText());
-            setAddress(l_address.getText());
-            setCity(l_city.getText());
-            setState(l_state.getText());
-            setZipcode(l_zipcode.getText());
-            setEmail(l_email.getText());
-            setPhoneNumber(l_phone_number.getText());
-        });
-
-        
-        grid.add(btn);
+        panel.add(l_email);                                                                
+        panel.add(tf_email); 
 
 
-        Scene scene = new Scene(grid, 300, 200);
+        Button submit = new Button("SUBMIT");
+        //approve.setOnAction(e -> {
+        //    approve.setFill(Color.FIREBRICK);
+        //    System.out.println("Button Clicked!");
+        //});
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+//
+
+        panel.add(submit);
+
+        frame.add(panel, BorderLayout.CENTER);
+        frame.setSize(500,500);
+        frame.setVisible(true);
     }
 
 
