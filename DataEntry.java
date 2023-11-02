@@ -245,17 +245,7 @@ public class DataEntry extends Application{
         return true;
     }
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
     boolean displayScreen(){
         return true;
     }
-
-
-
-=======
->>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
-=======
->>>>>>> b4c0cabed04ee33fd4081e66e3ad79462881b092
 }
