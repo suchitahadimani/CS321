@@ -241,4 +241,9 @@ public class DataEntry extends JFrame{
     boolean displayScreen(){
         return true;
     }
+
+    public static void main(String[] args){
+        DataEntry g = new DataEntry();
+    }
+
 }

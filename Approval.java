@@ -156,4 +156,7 @@ public class Approval {
         return false;
     }
     
+    public static void main(String[] args){
+        Approval a = new Approval();
+    }
 }
