@@ -1,11 +1,16 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import java.io.File;
+
 
 public class Approval {
 
     public Approval(){
-        JFrame frame= new JFrame("Matching Game");
+        JFrame frame = new JFrame("Approval");
         JPanel panel = new JPanel();
 
         panel.setLayout(new GridLayout(9,2));
@@ -61,18 +66,25 @@ public class Approval {
 
 
 
-        Button approve = new Button("APPROVE");
-        //approve.setOnAction(e -> {
-        //    approve.setFill(Color.FIREBRICK);
-        //    System.out.println("Button Clicked!");
-        //});
+        JButton approve = new JButton("APPROVE");
+        //performed when the submit button is pressed
+        approve.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                approveJFrame(frame);
+            }
+        });
 
-        Button deny = new Button("DENY");
-        //deny.setOnAction(e -> {
-        //    deny.setFill(Color.FIREBRICK);
-        //    System.out.println("Button Clicked!");
-        //});
-//
+        JButton deny = new JButton("DENY");
+        //performed when the reject button is pressed
+        deny.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                denyJFrame(frame);
+            }
+        });
 
         panel.add(approve);
         panel.add(deny);
@@ -82,7 +94,41 @@ public class Approval {
         frame.setVisible(true);
     }
 
-    
+    public void approveJFrame(JFrame frame)
+    {
+        //create the frame
+        JFrame submitted = new JFrame("Accepted!");
+        //set size
+        submitted.setSize(400, 150);
+        //make a new Jpanel
+        JPanel panel = new JPanel();
+        //add a message to panel
+        panel.add(new JLabel("The applicant's account has been created."));
+        //display the frame
+        submitted.add(panel, BorderLayout.CENTER);
+        submitted.setSize(500,500);
+        submitted.setVisible(true);
+        //hide the data entry frame
+        frame.setVisible(false);
+    }
+    public void denyJFrame(JFrame frame)
+    {
+        //create the frame
+        JFrame submitted = new JFrame("Rejected");
+        //set size
+        submitted.setSize(400, 150);
+        //make a new Jpanel
+        JPanel panel = new JPanel();
+        //add a message to panel
+        panel.add(new JLabel("The applicant's account has not been created."));
+        //display the frame
+        submitted.add(panel, BorderLayout.CENTER);
+        submitted.setSize(500,500);
+        submitted.setVisible(true);
+        //hide the data entry frame
+        frame.setVisible(false);
+    }
+
     private DataEntry immigrant;
     private int alienNumber;
 
