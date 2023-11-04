@@ -35,11 +35,28 @@ public class DataEntry extends JFrame{
     private JTextField enterEducation;
     private JButton saveIt;
     
+    public void makeNewJFrame(JFrame frame)
+    {
+        //create the frame
+        JFrame submitted = new JFrame("Submitted!");
+        //set size
+        submitted.setSize(400, 150);
+        //make a new Jpanel
+        JPanel panel = new JPanel();
+        //add a message to panel
+        panel.add(new JLabel("Congrats on submitting, your application will be reviewed."));
+        //display the frame
+        submitted.add(panel, BorderLayout.CENTER);
+        submitted.setSize(500,500);
+        submitted.setVisible(true);
+        //hide the data entry frame
+        frame.setVisible(false);
+    }
 
     //to launch application
     public DataEntry() {
         //create the frame
-        JFrame frame= new JFrame("Enter Your Information");
+        JFrame frame = new JFrame("Enter Your Information");
         //set size
         frame.setSize(400, 150);
 
@@ -73,6 +90,7 @@ public class DataEntry extends JFrame{
                 phone_number = Integer.parseInt(enterPhone.getText());
                 job = enterJob.getText();
                 education = enterEducation.getText();
+                makeNewJFrame(frame);
             }
         });
     
@@ -106,71 +124,6 @@ public class DataEntry extends JFrame{
         //add the panel to the frame
         frame.add(panel);
 
-
-
-
-        // JLabel l_firstname = new JLabel("First Name:");
-        // JLabel l_lastname = new JLabel("Last Name:");
-        // JLabel l_dob = new JLabel("Date of birth:");
-        // JLabel l_address = new JLabel("Address:");
-        // JLabel l_city = new JLabel("City:");
-        // JLabel l_state = new JLabel("State:");
-        // JLabel l_zipcode = new JLabel("Zip-Code:");
-        // JLabel l_email = new JLabel("Email:");
-        // JLabel l_phone_number = new JLabel("Phone Number:");
-
-
-        // //Label education = new Label("Enter highest education completed:");
-        // //Label job = new Label("List of Job:");
-        // //Label documents = new Label("Upload identification documents:");
-
-
-        // JTextField tf_firstname = new JTextField("First Name:");
-        // JTextField tf_lastname = new JTextField("Last Name:");
-        // JTextField tf_dob = new JTextField("Date of birth:");
-        // JTextField tf_address = new JTextField("Address:");
-        // JTextField tf_city = new JTextField("City:");
-        // JTextField tf_state = new JTextField("State:");
-        // JTextField tf_zipcode = new JTextField("Zip-Code:");
-        // JTextField tf_email = new JTextField("Email:");
-        // JTextField tf_phone_number = new JTextField("Phone Number:");
-
-        // panel.add(l_firstname);
-        // panel.add(tf_firstname);
-
-        // panel.add(l_lastname);
-        // panel.add(tf_lastname);
-
-        // panel.add(l_dob);
-        // panel.add(tf_dob);
-                                 
-        // panel.add(l_address);
-        // panel.add(tf_address);
-
-        // panel.add(l_city); 
-        // panel.add(tf_city);
-
-        // panel.add(l_state); 
-        // panel.add(tf_state); 
-
-        // panel.add(l_zipcode); 
-        // panel.add(tf_zipcode); 
-
-        // panel.add(l_email);                                                                
-        // panel.add(tf_email); 
-
-        // panel.add(l_phone_number);
-        // panel.add(tf_phone_number);
-
-        // JButton submit = new JButton("SUBMIT");
-
-        // //approve.setOnAction(e -> {
-        // //    approve.setFill(Color.FIREBRICK);
-        // //    System.out.println("Button Clicked!");
-        // //});
-        // //
-        // submit.addActionListener(new submitAction(this));
-        // panel.add(submit);
         frame.add(panel, BorderLayout.CENTER);
         frame.setSize(500,500);
         frame.setVisible(true);
@@ -208,7 +161,7 @@ public class DataEntry extends JFrame{
     }
 
 
-    // Getter and setter for 'address'
+    // Getter and setter for 'city'
     public String getCity() {
         return city;
     }
@@ -217,7 +170,7 @@ public class DataEntry extends JFrame{
         this.city = city;
     }
 
-    // Getter and setter for 'address'
+    // Getter and setter for 'state'
     public String getStateLived() {
         return stateLived;
     }
@@ -226,7 +179,7 @@ public class DataEntry extends JFrame{
         this.stateLived = state;
     }
 
-    // Getter and setter for 'address'
+    // Getter and setter for 'zipcode'
     public String getZipecode() {
         return zipcode;
     }
