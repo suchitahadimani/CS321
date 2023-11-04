@@ -4,7 +4,7 @@ public class Main {
         
         DataEntry g = new DataEntry();
         Approval m = new Approval();
-        System.out.println(g.getFirstName());
-        System.out.println("hi");
+        Business b = new Business();
+        System.out.println(b.generateTrackingNumber(g));
     }
 }

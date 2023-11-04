@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class Business {
 
     private boolean approvalStatus;
@@ -28,15 +31,18 @@ public class Business {
         this.immigrant = immigrant;
     }
 
-    public void generateTrackingNumber(DataEntry immigrant) {
-
+    public int generateTrackingNumber(DataEntry immigrant) {
+        Random randNum = new Random();
+        System.out.print("Tracking Number: ");
+        return randNum.nextInt(1000);
     }
 
     public void add_DB(DataEntry immigrant) {
-
+        LinkedList<DataEntry> dataBase = new LinkedList<DataEntry>();
+        dataBase.add(immigrant);
     }
 
-    public DataEntry retrieve_DB(DataEntry immigrant) {
+    public DataEntry retrieve_DB(int Tracking) {
 
         return null; 
     }
