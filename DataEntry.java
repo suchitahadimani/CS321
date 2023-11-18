@@ -94,7 +94,19 @@ public class DataEntry extends JFrame{
                 job = enterJob.getText();
                 education = enterEducation.getText();
                 //to validate if that the entries aren't empty
-                if(validateNumbers() && validateText())
+                if(!validateText())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, address, city, state, job, education, and a valid email with an @ is entered in!");
+                }
+                if(!validateNumEntries())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number includng the country code!");
+                }
+                if(!validateNumbers())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and that there are 11 digits entered for the phone number including the country code!");
+                }
+                if(validateNumbers() && validateText() && validateNumEntries())
                 {
                     makeNewJFrame(frame);
                 }
@@ -154,6 +166,11 @@ public class DataEntry extends JFrame{
             return false;
         }
         return true;
+    }
+
+    public boolean validateNumEntries()
+    {
+        return (phone_number.matches("\\d+"));
     }
 
     // Getter and setter for 'name'
