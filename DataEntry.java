@@ -34,6 +34,7 @@ public class DataEntry extends JFrame{
     private String education;
     private JTextField enterEducation;
     private JButton saveIt;
+    Workflow workTable;
     
     public void makeNewJFrame()
     {
@@ -52,7 +53,10 @@ public class DataEntry extends JFrame{
     }
 
     //to launch application
-    public DataEntry() {
+    public DataEntry(Workflow table) {
+        //make the workflow table
+        workTable = table;
+
         //create the frame
         JFrame frame = new JFrame("Enter Your Information");
         //set size
@@ -147,6 +151,7 @@ public class DataEntry extends JFrame{
                 makeNewJFrame();
             }
             //add the objects to the business and workflow classes
+            workTable.addNext(4);
         }
     }
 
