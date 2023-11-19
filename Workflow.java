@@ -1,5 +1,7 @@
 public class Workflow {
+
     private int currentStep;
+    
 
     public int getCurrentStep() {
         return currentStep;

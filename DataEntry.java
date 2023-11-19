@@ -35,7 +35,7 @@ public class DataEntry extends JFrame{
     private JTextField enterEducation;
     private JButton saveIt;
     
-    public void makeNewJFrame(JFrame frame)
+    public void makeNewJFrame()
     {
         //create the frame
         JFrame submitted = new JFrame("Submitted!");
@@ -49,8 +49,6 @@ public class DataEntry extends JFrame{
         submitted.add(panel, BorderLayout.CENTER);
         submitted.setSize(500,500);
         submitted.setVisible(true);
-        //hide the data entry frame
-        frame.setVisible(false);
     }
 
     //to launch application
@@ -78,40 +76,7 @@ public class DataEntry extends JFrame{
         JPanel panel = new JPanel();
 
         //performed when the submit button is pressed
-        saveIt.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                firstname = enterFirst.getText();
-                lastname = enterLast.getText();
-                email = enterEmail.getText();
-                address = enterAddress.getText();
-                city = enterCity.getText();
-                stateLived = enterState.getText();
-                zipcode = Integer.parseInt(enterZipcode.getText());
-                dob = Integer.parseInt(enterDob.getText());
-                phone_number = enterPhone.getText();
-                job = enterJob.getText();
-                education = enterEducation.getText();
-                //to validate if that the entries aren't empty
-                if(!validateText())
-                {
-                    JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, address, city, state, job, education, and a valid email with an @ is entered in!");
-                }
-                if(!validateNumEntries())
-                {
-                    JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number includng the country code!");
-                }
-                if(!validateNumbers())
-                {
-                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and that there are 11 digits entered for the phone number including the country code!");
-                }
-                if(validateNumbers() && validateText() && validateNumEntries())
-                {
-                    makeNewJFrame(frame);
-                }
-            }
-        });
+        saveIt.addActionListener(new listenToSubmit());
     
         //add all the labels and text boxes for user input
         panel.add(new JLabel("First Name: "));
@@ -146,6 +111,44 @@ public class DataEntry extends JFrame{
         frame.setVisible(true);
     }
 
+
+    private class listenToSubmit implements ActionListener
+    {
+
+        public void actionPerformed(ActionEvent e)
+        {
+            firstname = enterFirst.getText();
+            lastname = enterLast.getText();
+            email = enterEmail.getText();
+            address = enterAddress.getText();
+            city = enterCity.getText();
+            stateLived = enterState.getText();
+            zipcode = Integer.parseInt(enterZipcode.getText());
+            dob = Integer.parseInt(enterDob.getText());
+            phone_number = enterPhone.getText();
+            job = enterJob.getText();
+            education = enterEducation.getText();
+            //to validate if that the entries aren't empty or if they have the wrong types of inputs
+            if(!validateText())
+            {
+                JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, address, city, state, job, education, and a valid email with an @ is entered in!");
+            }
+            if(!validateNumEntries())
+            {
+                JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number includng the country code!");
+            }
+            if(!validateNumbers())
+            {
+                JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and that there are 11 digits entered for the phone number including the country code!");
+            }
+            if(validateNumbers() && validateText() && validateNumEntries())
+            {
+                //make the subitted Jframe
+                makeNewJFrame();
+            }
+            //add the objects to the business and workflow classes
+        }
+    }
 
     //to validate if that the entries have only letters
     public boolean validateText()
