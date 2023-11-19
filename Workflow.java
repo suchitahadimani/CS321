@@ -29,8 +29,10 @@ public class Workflow {
     {
         //create a workflow table
         Workflow immigrantTable = new Workflow();
+       
         //create a business object
         Business business = new Business();
+        
         //create a temporary DataEntry variable
         DataEntry temp = new DataEntry(immigrantTable, business);
 
@@ -55,6 +57,10 @@ public class Workflow {
             {
                 //remove the top item to move through the workflow
                 immigrantTable.getTable().remove(0);
+                
+                if(immigrantTable.getTable().size() == 0)
+                    break;
+                
                 approval = new Approval(business, immigrantTable.getTable().get(0));
             }
 

@@ -5,6 +5,7 @@ public class Business {
 
     private ArrayList<DataEntry> dataBase;
 
+    //iniatizes list containing immigrants
     public Business(){
         dataBase = new ArrayList<DataEntry>();
     }
@@ -29,6 +30,7 @@ public class Business {
         return dataBase;
     }
 
+    //to be implemented
     public void sendApprovalEmail(DataEntry immigrant) {
         
     }

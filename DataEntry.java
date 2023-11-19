@@ -176,6 +176,8 @@ public class DataEntry extends JFrame{
 
 
             else{
+
+                //setting variables
                 firstname = enterFirst.getText();
                 lastname = enterLast.getText();
                 email = enterEmail.getText();
@@ -195,7 +197,7 @@ public class DataEntry extends JFrame{
                 }
                 if(!validateNumbers())
                 {
-                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY, 5 digits for zipcode, and 10 digits entered for the phone number");
+                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and 11 digits entered for the phone number including country code");
                 }
                 if(validateNumbers() && validateText() && validateNumEntries())
                 {
@@ -233,7 +235,7 @@ public class DataEntry extends JFrame{
     {
 
         //make sure the phone number length is valid, make sure the date of birth is 8 characters long, make sure the zipcode is 5 chars long
-        if(enterPhone.getText().length() == 11 && (enterDob.getText().length() == 8 || enterDob.getText().length() == 7) && enterZipcode.getText().length() == 5)
+        if(enterPhone.getText().length() == 11 && (enterDob.getText().length() == 8 || enterDob.getText().length() == 7))
         {   
             return true;
         }

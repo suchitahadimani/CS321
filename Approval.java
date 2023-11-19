@@ -130,53 +130,7 @@ public class Approval {
         frame.setVisible(true);
     }
 
-    // public void approveJFrame(JFrame frame)
-    // {
-    //     //create the frame
-    //     JFrame submitted = new JFrame("Accepted!");
-        
-    //     //set size
-    //     submitted.setSize(400, 150);
-        
-    //     //make a new Jpanel
-    //     JPanel panel = new JPanel();
-       
-    //     //add a message to panel
-    //     panel.add(new JLabel("The applicant's account has been created."));
-        
-    //     //display the frame
-    //     submitted.add(panel, BorderLayout.CENTER);
-    //     submitted.setSize(500,500);
-    //     submitted.setVisible(true);
-        
-    //     //hide the data entry frame
-    //     frame.setVisible(false);
-    //     setApproved(true);
-    // }
-    // public void denyJFrame(JFrame frame)
-    // {
-    //     //create the frame
-    //     JFrame submitted = new JFrame("Rejected");
-        
-    //     //set size
-    //     submitted.setSize(400, 150);
-        
-    //     //make a new Jpanel
-    //     JPanel panel = new JPanel();
-        
-    //     //add a message to panel
-    //     panel.add(new JLabel("The applicant's account has not been created."));
-       
-    //     //display the frame
-    //     submitted.add(panel, BorderLayout.CENTER);
-    //     submitted.setSize(500,500);
-    //     submitted.setVisible(true);
-        
-    //     //hide the data entry frame
-    //     frame.setVisible(false);
-    //     setApproved(false);
-    // }
-
+    //setter and getter for approved
     public void setApproved(boolean approved) {
         this.approved = approved;
     }
@@ -185,6 +139,7 @@ public class Approval {
         return approved;
     }
 
+    //check for next
     public boolean canNext()
     {
         return submitted;
