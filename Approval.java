@@ -11,6 +11,8 @@ import java.io.File;
 
 public class Approval {
 
+    boolean approved;
+
     public Approval(Business business, int index){
 
         JFrame frame = new JFrame("Approval");
@@ -78,9 +80,8 @@ public class Approval {
         panel.add(tf_education);
 
 
-
-        JButton approve = new JButton("APPROVE");
         //performed when the submit button is pressed
+        JButton approve = new JButton("APPROVE");
         approve.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -89,8 +90,9 @@ public class Approval {
             }
         });
 
-        JButton deny = new JButton("DENY");
+
         //performed when the reject button is pressed
+        JButton deny = new JButton("DENY");
         deny.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -128,6 +130,7 @@ public class Approval {
         
         //hide the data entry frame
         frame.setVisible(false);
+        setApproved(true);
     }
     public void denyJFrame(JFrame frame)
     {
@@ -150,36 +153,15 @@ public class Approval {
         
         //hide the data entry frame
         frame.setVisible(false);
+        setApproved(false);
     }
 
-    private DataEntry immigrant;
-    private int alienNumber;
-
-    public DataEntry getImmigrant() {
-        return immigrant;
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
-    public void setImmigrant(DataEntry immigrant) {
-        this.immigrant = immigrant;
+    public boolean getApproved() {
+        return approved;
     }
 
-    public int getAlienNumber() {
-        return alienNumber;
-    }
-
-    public void setAlienNumber(int alienNumber) {
-        this.alienNumber = alienNumber;
-    }
-
-    public boolean approve(int alienNumber) {
-        return true;
-    }
-
-    public boolean deny(int alienNumber) {
-        return false;
-    }
-    
-    public static void main(String[] args){
-        Approval a = new Approval();
-    }
 }
