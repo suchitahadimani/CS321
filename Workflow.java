@@ -44,16 +44,20 @@ public class Workflow {
         }
 
         //create an approval object
-        Approval approval = new Approval(business, immigrantTable.getTable().get(0));
+        Approval approval;
 
         //if there is another business object
         while(immigrantTable.getTable().get(0) < business.getTable().size())
         {
+            //make a new approval object
+            approval = new Approval(business, immigrantTable.getTable().get(0));
+
+
             //if the user submitted whether or not they accepted or rejected the applicant
             if(approval.canNext())
             {
-                //make a new approval object
-                approval = new Approval(business, immigrantTable.getTable().get(0));
+                
+                
                 //remove the top item to move through the workflow
                 immigrantTable.getTable().remove(0);
             }

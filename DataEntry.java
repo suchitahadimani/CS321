@@ -45,12 +45,16 @@ public class DataEntry extends JFrame{
     {
         //create the frame
         JFrame submitted = new JFrame("Submitted!");
+        
         //set size
         submitted.setSize(400, 150);
+        
         //make a new Jpanel
         JPanel panel = new JPanel();
+        
         //add a message to panel
         panel.add(new JLabel("Congrats on submitting, your application will be reviewed."));
+        
         //display the frame
         submitted.add(panel, BorderLayout.CENTER);
         submitted.setSize(500,500);
@@ -62,14 +66,17 @@ public class DataEntry extends JFrame{
 
         //initalize the workflow table
         workTable = table;
+        
         //initialize the business object
         business = immigrantRequest;
+        
         //initialize the quit and submit button
         quit = false;
         submit = false;
 
         //create the frame
         JFrame frame = new JFrame("Enter Your Information");
+        
         //set size
         frame.setSize(400, 150);
 
@@ -148,41 +155,64 @@ public class DataEntry extends JFrame{
 
         public void actionPerformed(ActionEvent e)
         {
-            firstname = enterFirst.getText();
-            lastname = enterLast.getText();
-            email = enterEmail.getText();
-            address = enterAddress.getText();
-            city = enterCity.getText();
-            stateLived = enterState.getText();
-            zipcode = Integer.parseInt(enterZipcode.getText());
-            dob = Integer.parseInt(enterDob.getText());
-            phone_number = enterPhone.getText();
-            job = enterJob.getText();
-            education = enterEducation.getText();
             
-            //to validate if that the entries aren't empty or if they have the wrong types of inputs
-            if(!validateText())
-            {
-                JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, city, state, job, education, and a valid email with an @ is entered in!");
+            //ensuring none of the data fields are blank, splitting accross several if statements for readability
+            if(enterFirst.getText().trim().isEmpty() || enterLast.getText().trim().isEmpty() || enterEmail.getText().trim().isEmpty() || enterAddress.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Make sure there are no blank fields");
             }
-            if(!validateNumEntries())
-            {
-                JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number includng the country code!");
+
+            else if(enterCity.getText().trim().isEmpty() || enterState.getText().trim().isEmpty() || enterZipcode.getText().trim().isEmpty() || enterDob.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Make sure there are no blank fields");
             }
-            if(!validateNumbers())
-            {
-                JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and that there are 11 digits entered for the phone number including the country code!");
+
+            else if(enterPhone.getText().trim().isEmpty() || enterEducation.getText().trim().isEmpty() || enterJob.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Make sure there are no blank fields");
             }
-            if(validateNumbers() && validateText() && validateNumEntries())
-            {
-                //make the subitted Jframe
-                makeNewJFrame();
-                //the form was submitted
-                submit = true;
-                //add the objects to the business and workflow classes
-                workTable.getTable().add(workTable.getSize() + 1);
-                addBusiness();
+
+            else if(!validateNumEntries()){
+                JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number, zipcode, and date of birth!");
             }
+
+
+
+            else{
+                firstname = enterFirst.getText();
+                lastname = enterLast.getText();
+                email = enterEmail.getText();
+                address = enterAddress.getText();
+                city = enterCity.getText();
+                stateLived = enterState.getText();
+                zipcode = Integer.parseInt(enterZipcode.getText());
+                dob = Integer.parseInt(enterDob.getText());
+                phone_number = enterPhone.getText();
+                job = enterJob.getText();
+                education = enterEducation.getText();
+
+                //to validate if that the entries aren't empty or if they have the wrong types of inputs
+                if(!validateText())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, city, state, job, education, and a valid email with an @ is entered in!");
+                }
+                if(!validateNumbers())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY, 5 digits for zipcode, and 10 digits entered for the phone number");
+                }
+                if(validateNumbers() && validateText() && validateNumEntries())
+                {
+                    //make the subitted Jframe
+                    makeNewJFrame();
+                    
+                    //the form was submitted
+                    submit = true;
+                    
+                    //add the objects to the business and workflow classes
+                    workTable.getTable().add(workTable.getSize());
+                    addBusiness();
+                }
+            }
+            
+            
+
 
         }
     }
@@ -202,17 +232,11 @@ public class DataEntry extends JFrame{
     public boolean validateNumbers()
     {
         //convert the int to a string to make it easier to determine the length of the int
-        String conversion = Integer.toString(dob);
+        String dob_conversion = enterDob.getText();
 
-        //make sure the phone number length is valid
-        if(phone_number.length() != 11)
-        {
-            return false;
-        }
-
-        //make sure the date of birth is 8 characters long
-        if(conversion.length() == 8 || conversion.length() == 7)
-        {
+        //make sure the phone number length is valid, make sure the date of birth is 8 characters long, make sure the zipcode is 5 chars long
+        if(enterPhone.getText().length() == 10 && (enterDob.getText().length() == 8 || enterDob.getText().length() == 7) && enterZipcode.getText().length() == 5)
+        {   
             return true;
         }
 
@@ -222,8 +246,16 @@ public class DataEntry extends JFrame{
 
     public boolean validateNumEntries()
     {
-        //validate the phone number
-        return (phone_number.matches("\\d+"));
+       
+        try {
+            Integer.parseInt(enterDob.getText());
+            Integer.parseInt(enterZipcode.getText());
+            Integer.parseInt(enterPhone.getText());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        
     }
 
     // Getter and setter for 'name'
