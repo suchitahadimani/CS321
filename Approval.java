@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import java.io.File;
 
+//added this thing
 
 public class Approval {
 
@@ -14,7 +15,7 @@ public class Approval {
         JFrame frame = new JFrame("Approval");
         JPanel panel = new JPanel();
 
-        panel.setLayout(new GridLayout(9,2));
+        panel.setLayout(new GridLayout(11,2));
 
 
         JLabel l_firstname = new JLabel("First Name:");
@@ -71,6 +72,9 @@ public class Approval {
         
         panel.add(l_phone_number);
         panel.add(tf_phone_number);
+
+        panel.add(l_education);
+        panel.add(tf_education);
 
 
 
