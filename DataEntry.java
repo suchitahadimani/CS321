@@ -34,7 +34,10 @@ public class DataEntry extends JFrame{
     private String education;
     private JTextField enterEducation;
     private JButton saveIt;
-    Workflow workTable;
+    private boolean quit;
+    private JButton quitIt;
+
+    //Workflow workTable;
     
     public void makeNewJFrame()
     {
@@ -53,9 +56,10 @@ public class DataEntry extends JFrame{
     }
 
     //to launch application
-    public DataEntry(Workflow table) {
+    //public DataEntry(Workflow table) {
+    public DataEntry() {
         //make the workflow table
-        workTable = table;
+        //workTable = table;
 
         //create the frame
         JFrame frame = new JFrame("Enter Your Information");
@@ -75,12 +79,23 @@ public class DataEntry extends JFrame{
         enterJob = new JTextField(10);
         enterEducation = new JTextField(10);
         saveIt = new JButton("Submit");
+        quit = new JButton("Quit");
 
         //create the JPanel
         JPanel panel = new JPanel();
 
         //performed when the submit button is pressed
         saveIt.addActionListener(new listenToSubmit());
+
+        //performed when the quit button is pressed
+        quitIt.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                frame.setVisible(false);
+                quit = true;
+            }
+        });
     
         //add all the labels and text boxes for user input
         panel.add(new JLabel("First Name: "));
@@ -108,6 +123,9 @@ public class DataEntry extends JFrame{
         
         //add the save button
         panel.add(saveIt);
+
+        //add the quit button
+        panel.add(quitIt);
         
         //add the panel to the frame
         frame.add(panel);
@@ -155,9 +173,10 @@ public class DataEntry extends JFrame{
             }
             
             //add the objects to the business and workflow classes
-            workTable.addNext();
+            //workTable.add(workTable.size() + 1);
         }
     }
+
 
     //to validate if that the entries have only letters
     public boolean validateText()
@@ -285,6 +304,10 @@ public class DataEntry extends JFrame{
         this.education = education;
     }
 
+    public boolean getQuit()
+    {
+        return quit;
+    }
 
     boolean submit(){
         return true;
@@ -295,6 +318,8 @@ public class DataEntry extends JFrame{
     }
 
     public static void main(String[] args){
+        //Workflow table = new Workflow();
+        //DataEntry g = new DataEntry(table);
         DataEntry g = new DataEntry();
     }
 

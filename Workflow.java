@@ -3,34 +3,28 @@ import java.util.ArrayList;
 
 public class Workflow {
 
-    private int currentStep;
 
-    public static void main(String[] args)
+    public Workflow()
     {
         ArrayList<Integer> table = new ArrayList<>();
     }
 
     public void addNext(ArrayList<Integer> table)
     {
-        //
-        //add the item to the end of the table
-        table.add();
+        //add the item to the table
+        table.add(table.size() + 1);
     }
 
-    public int getCurrentStep() {
-        return currentStep;
+    public static void main(String[] args)
+    {
+        Workflow immigrantTable = new Workflow();
+        DataEntry item = new DataEntry();
+        int i = 0;
+        while(!item.getQuit())
+        {
+            i = 1;
+        }
+
     }
 
-    public void setCurrentStep(int currentStep) {
-        this.currentStep = currentStep;
-    }
-
-    public int getNext(int currentStep) {
-        //until we figure out how to implement this
-        return currentStep + 1;
-    }
-
-    public boolean hasNext(int currentStep) {
-        return true;
-    }
 }
