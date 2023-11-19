@@ -195,7 +195,7 @@ public class DataEntry extends JFrame{
     //to validate if that the entries have only letters or spaces in the address, job, or education variables
     public boolean validateText()
     {
-        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("^[a-zA-Z\\s]+$") && education.matches("^[a-zA-Z\\s]+$"));
+        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && email.contains(".") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("^[a-zA-Z\\s]+$") && education.matches("^[a-zA-Z\\s]+$"));
     }
 
     //validate the length of the date of birth

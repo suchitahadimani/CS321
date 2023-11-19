@@ -33,8 +33,6 @@ public class Workflow {
         Business business = new Business();
         //create a temporary DataEntry variable
         DataEntry temp = new DataEntry(immigrantTable, business);
-        //create an approval object
-        Approval approval;
 
         //do while loop to keep going until the user presses quit
         while(!temp.getQuit())
@@ -45,19 +43,20 @@ public class Workflow {
             }
         }
 
-        // int count = 0; //incorporate workflow in count
-        // while(count < business.getTable().size())
-        // {
-        //     if(approval.getNext())
-        //     {
-        //         approval = new Approval(business, immigrantTable.getTable().size() - count - 1);
-        //         count++;
-        //     }
-        // }
-        //for loop to call approval for the amount of 
-        for(int i = 0; i < immigrantTable.getTable().size(); i++)
+        //create an approval object
+        Approval approval = new Approval(business, immigrantTable.getTable().get(0));
+
+        //if there is another business object
+        while(immigrantTable.getTable().get(0) < business.getTable().size())
         {
-            approval = new Approval(business, immigrantTable.getTable().size() - i - 1);
+            //if the user submitted whether or not they accepted or rejected the applicant
+            if(approval.canNext())
+            {
+                //make a new approval object
+                approval = new Approval(business, immigrantTable.getTable().get(0));
+                //remove the top item to move through the workflow
+                immigrantTable.getTable().remove(0);
+            }
         }
 
     }

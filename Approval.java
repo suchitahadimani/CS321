@@ -14,6 +14,8 @@ public class Approval {
 
     public Approval(Business business, int index){
 
+        submitted = false;
+
         JFrame frame = new JFrame("Approval");
         JPanel panel = new JPanel();
 
@@ -110,6 +112,16 @@ public class Approval {
             }
         });
 
+        nextApplicant.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                // denyJFrame(frame);
+                submitted = true;
+                frame.setVisible(false);
+            }
+        });
+
         panel.add(approve);
         panel.add(deny);
 
@@ -173,4 +185,8 @@ public class Approval {
         return approved;
     }
 
+    public boolean canNext()
+    {
+        return submitted;
+    }
 }
