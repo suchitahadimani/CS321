@@ -23,11 +23,11 @@ public class DataEntry extends JFrame{
     private JTextField enterCity;
     private String stateLived;
     private JTextField enterState;
-    private String zipcode;
+    private int zipcode;
     private JTextField enterZipcode;
     private int dob;
     private JTextField enterDob;
-    private int phone_number;
+    private String phone_number;
     private JTextField enterPhone;
     private String job;
     private JTextField enterJob;
@@ -74,6 +74,9 @@ public class DataEntry extends JFrame{
         enterEducation = new JTextField(10);
         saveIt = new JButton("Submit");
 
+        //create the JPanel
+        JPanel panel = new JPanel();
+
         //performed when the submit button is pressed
         saveIt.addActionListener(new ActionListener()
         {
@@ -85,17 +88,31 @@ public class DataEntry extends JFrame{
                 address = enterAddress.getText();
                 city = enterCity.getText();
                 stateLived = enterState.getText();
-                zipcode = enterZipcode.getText();
+                zipcode = Integer.parseInt(enterZipcode.getText());
                 dob = Integer.parseInt(enterDob.getText());
-                phone_number = Integer.parseInt(enterPhone.getText());
+                phone_number = enterPhone.getText();
                 job = enterJob.getText();
                 education = enterEducation.getText();
-                makeNewJFrame(frame);
+                //to validate if that the entries aren't empty
+                if(!validateText())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, address, city, state, job, education, and a valid email with an @ is entered in!");
+                }
+                if(!validateNumEntries())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are only numbers entered in for the phone number includng the country code!");
+                }
+                if(!validateNumbers())
+                {
+                    JOptionPane.showMessageDialog(null, "Make sure there are 8 digits entered in for the birthday in the format MMDDYYYY and that there are 11 digits entered for the phone number including the country code!");
+                }
+                if(validateNumbers() && validateText() && validateNumEntries())
+                {
+                    makeNewJFrame(frame);
+                }
             }
         });
     
-        //create the JPanel
-        JPanel panel = new JPanel();
         //add all the labels and text boxes for user input
         panel.add(new JLabel("First Name: "));
         panel.add(enterFirst);
@@ -130,8 +147,31 @@ public class DataEntry extends JFrame{
     }
 
 
+    //to validate if that the entries have only letters
+    public boolean validateText()
+    {
+        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && address.matches("[a-zA-Z]+") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("[a-zA-Z]+") && education.matches("[a-zA-Z]+"));
+    }
 
+    //validate the length of the date of birth
+    public boolean validateNumbers()
+    {
+        //to validate if that the dob only has 8 characters in it for the format 
+        if(dob < 9999999 || dob > 99999999)
+        {
+            return false;
+        }
+        if(phone_number.length() != 11)
+        {
+            return false;
+        }
+        return true;
+    }
 
+    public boolean validateNumEntries()
+    {
+        return (phone_number.matches("\\d+"));
+    }
 
     // Getter and setter for 'name'
     public String getFirstName() {
@@ -180,11 +220,11 @@ public class DataEntry extends JFrame{
     }
 
     // Getter and setter for 'zipcode'
-    public String getZipecode() {
+    public int getZipecode() {
         return zipcode;
     }
 
-    public void setZipcode(String zipcode) {
+    public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -207,11 +247,11 @@ public class DataEntry extends JFrame{
     }
 
     // Getter and setter for 'phone_number'
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phone_number;
     }
 
-    public void setPhoneNumber(int phone_number) {
+    public void setPhoneNumber(String phone_number) {
         this.phone_number = phone_number;
     }
 
