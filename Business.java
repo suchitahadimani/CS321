@@ -6,6 +6,11 @@ public class Business {
     private boolean approvalStatus;
     private boolean approvalReceived;
     private DataEntry immigrant;
+    private ArrayList<DataEntry> dataBase;
+
+    public Business(){
+        dataBase = new ArrayList<DataEntry>();
+    }
 
     public boolean isApprovalStatus() {
         return approvalStatus;
@@ -23,28 +28,12 @@ public class Business {
         this.approvalReceived = approvalReceived;
     }
 
-    public DataEntry getImmigrant() {
-        return immigrant;
-    }
-
-    public void setImmigrant(DataEntry immigrant) {
-        this.immigrant = immigrant;
-    }
-
-    public int generateTrackingNumber(DataEntry immigrant) {
-        Random randNum = new Random();
-        System.out.print("Tracking Number: ");
-        return randNum.nextInt(1000);
-    }
-
     public void add_DB(DataEntry immigrant) {
-        LinkedList<DataEntry> dataBase = new LinkedList<DataEntry>();
         dataBase.add(immigrant);
     }
 
-    public DataEntry retrieve_DB(int Tracking) {
-
-        return null; 
+    public DataEntry retrieve_DB(int index) {
+        return dataBase.get(index);
     }
 
     public boolean getApproval(DataEntry immigrant) {

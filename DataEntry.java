@@ -105,8 +105,10 @@ public class DataEntry extends JFrame{
         panel.add(enterJob);
         panel.add(new JLabel("Highest Level of Education: "));
         panel.add(enterEducation);
+        
         //add the save button
         panel.add(saveIt);
+        
         //add the panel to the frame
         frame.add(panel);
 
@@ -132,6 +134,7 @@ public class DataEntry extends JFrame{
             phone_number = enterPhone.getText();
             job = enterJob.getText();
             education = enterEducation.getText();
+            
             //to validate if that the entries aren't empty or if they have the wrong types of inputs
             if(!validateText())
             {
@@ -150,8 +153,9 @@ public class DataEntry extends JFrame{
                 //make the subitted Jframe
                 makeNewJFrame();
             }
+            
             //add the objects to the business and workflow classes
-            workTable.addNext(4);
+            workTable.addNext();
         }
     }
 
