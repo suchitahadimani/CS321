@@ -17,6 +17,17 @@ public class Business {
         return dataBase.get(index);
     }
 
+    //get the size of the table
+    public int getSize()
+    {
+        return dataBase.size();
+    }
+
+    //get the table
+    public ArrayList<DataEntry> getTable()
+    {
+        return dataBase;
+    }
 
     public void sendApprovalEmail(DataEntry immigrant) {
         

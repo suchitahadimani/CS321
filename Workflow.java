@@ -3,26 +3,52 @@ import java.util.ArrayList;
 
 public class Workflow {
 
+    //create a table variable
+    ArrayList<Integer> table;
 
+    //constructor to initialze the table
     public Workflow()
     {
-        ArrayList<Integer> table = new ArrayList<>();
+        table = new ArrayList<>();
     }
 
-    public void addNext(ArrayList<Integer> table)
+    //get the size of the table
+    public int getSize()
     {
-        //add the item to the table
-        table.add(table.size() + 1);
+        return table.size();
     }
 
+    //get the table
+    public ArrayList<Integer> getTable()
+    {
+        return table;
+    }
+
+    //main method
     public static void main(String[] args)
     {
+        //create a workflow table
         Workflow immigrantTable = new Workflow();
-        DataEntry item = new DataEntry();
-        int i = 0;
-        while(!item.getQuit())
+        //create a business object
+        Business business = new Business();
+        //create a temporary DataEntry variable
+        DataEntry temp = new DataEntry(immigrantTable, business);
+        //create an approval object
+        Approval approval;
+
+        //do while loop to keep going until the 
+        while(!temp.getQuit())
         {
-            i = 1;
+            if(temp.getSubmit())
+            {
+                temp = new DataEntry(immigrantTable, business);
+            }
+        }
+
+        //for loop to call approval until the 
+        for(int i = 0; i < immigrantTable.getTable().size(); i++)
+        {
+            approval = new Approval(business, i);
         }
 
     }

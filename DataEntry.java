@@ -34,10 +34,12 @@ public class DataEntry extends JFrame{
     private String education;
     private JTextField enterEducation;
     private JButton saveIt;
+    private boolean submit;
     private boolean quit;
     private JButton quitIt;
 
-    //Workflow workTable;
+    Workflow workTable;
+    Business business;
     
     public void makeNewJFrame()
     {
@@ -56,10 +58,15 @@ public class DataEntry extends JFrame{
     }
 
     //to launch application
-    //public DataEntry(Workflow table) {
-    public DataEntry() {
-        //make the workflow table
-        //workTable = table;
+    public DataEntry(Workflow table, Business immigrantRequest) {
+
+        //initalize the workflow table
+        workTable = table;
+        //initialize the business object
+        business = immigrantRequest;
+        //initialize the quit and submit button
+        quit = false;
+        submit = false;
 
         //create the frame
         JFrame frame = new JFrame("Enter Your Information");
@@ -79,7 +86,7 @@ public class DataEntry extends JFrame{
         enterJob = new JTextField(10);
         enterEducation = new JTextField(10);
         saveIt = new JButton("Submit");
-        quit = new JButton("Quit");
+        quitIt = new JButton("Quit");
 
         //create the JPanel
         JPanel panel = new JPanel();
@@ -156,7 +163,7 @@ public class DataEntry extends JFrame{
             //to validate if that the entries aren't empty or if they have the wrong types of inputs
             if(!validateText())
             {
-                JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, address, city, state, job, education, and a valid email with an @ is entered in!");
+                JOptionPane.showMessageDialog(null, "Make sure there are only letters in the firstname, lastname, city, state, job, education, and a valid email with an @ is entered in!");
             }
             if(!validateNumEntries())
             {
@@ -170,24 +177,31 @@ public class DataEntry extends JFrame{
             {
                 //make the subitted Jframe
                 makeNewJFrame();
+                //the form was submitted
+                submit = true;
+                //add the objects to the business and workflow classes
+                workTable.getTable().add(workTable.getSize() + 1);
+                addBusiness();
             }
-            
-            //add the objects to the business and workflow classes
-            //workTable.add(workTable.size() + 1);
+
         }
     }
 
+    public void addBusiness()
+    {
+        business.getTable().add(this);
+    }
 
     //to validate if that the entries have only letters
     public boolean validateText()
     {
-        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && address.matches("[a-zA-Z]+") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("[a-zA-Z]+") && education.matches("[a-zA-Z]+"));
+        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("[a-zA-Z]+") && education.matches("[a-zA-Z]+"));
     }
 
     //validate the length of the date of birth
     public boolean validateNumbers()
     {
-        //to validate if that the dob only has 8 characters in it for the format 
+        //to validate if that the dob only has 8 characters in it for the format, find different way to validate numbers if starting with 0???
         if(dob < 9999999 || dob > 99999999)
         {
             return false;
@@ -309,18 +323,17 @@ public class DataEntry extends JFrame{
         return quit;
     }
 
-    boolean submit(){
-        return true;
+    public boolean getSubmit()
+    {
+        return submit;
     }
 
-    boolean displayScreen(){
-        return true;
-    }
 
     public static void main(String[] args){
-        //Workflow table = new Workflow();
-        //DataEntry g = new DataEntry(table);
-        DataEntry g = new DataEntry();
+        Workflow table = new Workflow();
+        Business b = new Business();
+        DataEntry g = new DataEntry(table, b);
+        //DataEntry g = new DataEntry();
     }
 
 }
