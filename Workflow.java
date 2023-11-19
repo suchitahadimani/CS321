@@ -45,6 +45,15 @@ public class Workflow {
             }
         }
 
+        // int count = 0; //incorporate workflow in count
+        // while(count < business.getTable().size())
+        // {
+        //     if(approval.getNext())
+        //     {
+        //         approval = new Approval(business, immigrantTable.getTable().size() - count - 1);
+        //         count++;
+        //     }
+        // }
         //for loop to call approval for the amount of 
         for(int i = 0; i < immigrantTable.getTable().size(); i++)
         {

@@ -10,6 +10,7 @@ import java.io.File;
 public class Approval {
 
     boolean approved;
+    public boolean submitted;
 
     public Approval(Business business, int index){
 
@@ -80,22 +81,32 @@ public class Approval {
 
         //performed when the submit button is pressed
         JButton approve = new JButton("APPROVE");
+        //performed when the reject button is pressed
+        JButton deny = new JButton("DENY");
+        //performed to get the next input from the business object
+        JButton nextApplicant = new JButton("NEXT");
+
         approve.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                approveJFrame(frame);
+                // approveJFrame(frame);
+                JOptionPane.showMessageDialog(null, "The applicant's account has been created!");
+                approve.setVisible(false);
+                deny.setVisible(false);
+                panel.add(nextApplicant);
             }
         });
 
-
-        //performed when the reject button is pressed
-        JButton deny = new JButton("DENY");
         deny.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                denyJFrame(frame);
+                // denyJFrame(frame);
+                JOptionPane.showMessageDialog(null, "The applicant's account has been denied!");
+                approve.setVisible(false);
+                deny.setVisible(false);
+                panel.add(nextApplicant);
             }
         });
 
@@ -107,52 +118,52 @@ public class Approval {
         frame.setVisible(true);
     }
 
-    public void approveJFrame(JFrame frame)
-    {
-        //create the frame
-        JFrame submitted = new JFrame("Accepted!");
+    // public void approveJFrame(JFrame frame)
+    // {
+    //     //create the frame
+    //     JFrame submitted = new JFrame("Accepted!");
         
-        //set size
-        submitted.setSize(400, 150);
+    //     //set size
+    //     submitted.setSize(400, 150);
         
-        //make a new Jpanel
-        JPanel panel = new JPanel();
+    //     //make a new Jpanel
+    //     JPanel panel = new JPanel();
        
-        //add a message to panel
-        panel.add(new JLabel("The applicant's account has been created."));
+    //     //add a message to panel
+    //     panel.add(new JLabel("The applicant's account has been created."));
         
-        //display the frame
-        submitted.add(panel, BorderLayout.CENTER);
-        submitted.setSize(500,500);
-        submitted.setVisible(true);
+    //     //display the frame
+    //     submitted.add(panel, BorderLayout.CENTER);
+    //     submitted.setSize(500,500);
+    //     submitted.setVisible(true);
         
-        //hide the data entry frame
-        frame.setVisible(false);
-        setApproved(true);
-    }
-    public void denyJFrame(JFrame frame)
-    {
-        //create the frame
-        JFrame submitted = new JFrame("Rejected");
+    //     //hide the data entry frame
+    //     frame.setVisible(false);
+    //     setApproved(true);
+    // }
+    // public void denyJFrame(JFrame frame)
+    // {
+    //     //create the frame
+    //     JFrame submitted = new JFrame("Rejected");
         
-        //set size
-        submitted.setSize(400, 150);
+    //     //set size
+    //     submitted.setSize(400, 150);
         
-        //make a new Jpanel
-        JPanel panel = new JPanel();
+    //     //make a new Jpanel
+    //     JPanel panel = new JPanel();
         
-        //add a message to panel
-        panel.add(new JLabel("The applicant's account has not been created."));
+    //     //add a message to panel
+    //     panel.add(new JLabel("The applicant's account has not been created."));
        
-        //display the frame
-        submitted.add(panel, BorderLayout.CENTER);
-        submitted.setSize(500,500);
-        submitted.setVisible(true);
+    //     //display the frame
+    //     submitted.add(panel, BorderLayout.CENTER);
+    //     submitted.setSize(500,500);
+    //     submitted.setVisible(true);
         
-        //hide the data entry frame
-        frame.setVisible(false);
-        setApproved(false);
-    }
+    //     //hide the data entry frame
+    //     frame.setVisible(false);
+    //     setApproved(false);
+    // }
 
     public void setApproved(boolean approved) {
         this.approved = approved;
