@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 
 import java.io.File;
 
-//added this thing
-//added second things
 
 public class Approval {
 

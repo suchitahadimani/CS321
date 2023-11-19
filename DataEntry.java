@@ -192,29 +192,37 @@ public class DataEntry extends JFrame{
         business.getTable().add(this);
     }
 
-    //to validate if that the entries have only letters
+    //to validate if that the entries have only letters or spaces in the address, job, or education variables
     public boolean validateText()
     {
-        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("[a-zA-Z]+") && education.matches("[a-zA-Z]+"));
+        return (firstname.matches("[a-zA-Z]+") && lastname.matches("[a-zA-Z]+") && email.contains("@") && city.matches("[a-zA-Z]+") && stateLived.matches("[a-zA-Z]+") && job.matches("^[a-zA-Z\\s]+$") && education.matches("^[a-zA-Z\\s]+$"));
     }
 
     //validate the length of the date of birth
     public boolean validateNumbers()
     {
-        //to validate if that the dob only has 8 characters in it for the format, find different way to validate numbers if starting with 0???
-        if(dob < 9999999 || dob > 99999999)
-        {
-            return false;
-        }
+        //convert the int to a string to make it easier to determine the length of the int
+        String conversion = Integer.toString(dob);
+
+        //make sure the phone number length is valid
         if(phone_number.length() != 11)
         {
             return false;
         }
-        return true;
+
+        //make sure the date of birth is 8 characters long
+        if(conversion.length() == 8 || conversion.length() == 7)
+        {
+            return true;
+        }
+
+        //if the numbers are good
+        return false;
     }
 
     public boolean validateNumEntries()
     {
+        //validate the phone number
         return (phone_number.matches("\\d+"));
     }
 

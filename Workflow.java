@@ -36,7 +36,7 @@ public class Workflow {
         //create an approval object
         Approval approval;
 
-        //do while loop to keep going until the 
+        //do while loop to keep going until the user presses quit
         while(!temp.getQuit())
         {
             if(temp.getSubmit())
@@ -45,10 +45,10 @@ public class Workflow {
             }
         }
 
-        //for loop to call approval until the 
+        //for loop to call approval for the amount of 
         for(int i = 0; i < immigrantTable.getTable().size(); i++)
         {
-            approval = new Approval(business, i);
+            approval = new Approval(business, immigrantTable.getTable().size() - i - 1);
         }
 
     }
