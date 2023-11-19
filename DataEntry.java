@@ -231,11 +231,9 @@ public class DataEntry extends JFrame{
     //validate the length of the date of birth
     public boolean validateNumbers()
     {
-        //convert the int to a string to make it easier to determine the length of the int
-        String dob_conversion = enterDob.getText();
 
         //make sure the phone number length is valid, make sure the date of birth is 8 characters long, make sure the zipcode is 5 chars long
-        if(enterPhone.getText().length() == 10 && (enterDob.getText().length() == 8 || enterDob.getText().length() == 7) && enterZipcode.getText().length() == 5)
+        if(enterPhone.getText().length() == 11 && (enterDob.getText().length() == 8 || enterDob.getText().length() == 7) && enterZipcode.getText().length() == 5)
         {   
             return true;
         }
@@ -250,7 +248,6 @@ public class DataEntry extends JFrame{
         try {
             Integer.parseInt(enterDob.getText());
             Integer.parseInt(enterZipcode.getText());
-            Integer.parseInt(enterPhone.getText());
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -366,14 +363,6 @@ public class DataEntry extends JFrame{
     public boolean getSubmit()
     {
         return submit;
-    }
-
-
-    public static void main(String[] args){
-        Workflow table = new Workflow();
-        Business b = new Business();
-        DataEntry g = new DataEntry(table, b);
-        //DataEntry g = new DataEntry();
     }
 
 }
