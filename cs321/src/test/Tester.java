@@ -4,10 +4,10 @@ import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import Approval;
-import Business;
-import DataEntry;
-import Workflow;
+import CS321.src.main.Workflow;
+import CS321.src.main.Approval;
+import CS321.src.main.Business;
+import CS321.src.main.DataEntry;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
@@ -19,10 +19,14 @@ public class Tester
 
     ////////////////////////////////////////////////////////////////////////////
     //testing Workflow class
+   @Test
+    public void checkWorkflow() {
+
+        Workflow wf = new Workflow();
+        assertTrue(wf.getTable() != null);
+    }
 
 
-     
-   
 
     /////////////////////////////////////////////////
     //Business Object Test cases
@@ -81,6 +85,7 @@ public class Tester
     {
        checkAddDB();
        checkRetrieveDB();
+       checkWorkflow();
 
     }
 
