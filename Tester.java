@@ -7,8 +7,10 @@ import java.beans.Transient;
 public class Tester 
 {
 
-    ////////////////////////////////////////////////////////////////////////////
-    //testing Workflow class
+    /*
+     * @author Sadhana Mallemudi
+     * This is to test the constructor in the Workflow class. 
+     */
    @Test
     public static void checkWorkflow() {
 
@@ -25,12 +27,10 @@ public class Tester
         }
     }
 
-
-
-
-    /////////////////////////////////////////////////
-    //Business Object Test cases
-  
+    /*
+     * @author Sadhana Mallemudi and Suchita Hadimani
+     * This is to test to see if the item got added to the business object.
+     */
     @Test
     public static void checkAddDB() {
 
@@ -53,7 +53,10 @@ public class Tester
 
     }
 
-
+    /*
+     * @author Suchita Hadimani
+     * This is to test to see if the program is able to properly retrieve from the database in the business object.
+     */
     @Test
     public static void checkRetrieveDB() {
 
@@ -76,13 +79,14 @@ public class Tester
     }
 
 
+    /*This is the main method to test. */
     public static void main(String args[]){
         checkAddDB();
         checkRetrieveDB();
         checkWorkflow();
     }
 
-    
+    /*Run using the command javac -cp .:junit-4.10.jar *.java followed by java -cp .:junit-4.10.jar Tester for MAC and javac -cp .;.\junit-4.10.jar *.java followed by java -cp .;junit-4.10.jar Tester for Windows. */
 
 
 }
