@@ -36,10 +36,11 @@ public class Tester
 
         try{
             Business obj = new Business();
-            DataEntry dataEntry = new DataEntry(null, null);
+            Workflow wf = new Workflow();
+            DataEntry dataEntry = new DataEntry(wf, obj);
 
             obj.add_DB(dataEntry);
-            assertTrue(obj.getSize() == 0);
+            assertTrue(obj.getSize() != 0);
             System.out.println("ADD DB TEST PASS");
 
         }
@@ -58,7 +59,8 @@ public class Tester
 
         try{
             Business obj = new Business();
-            DataEntry dataEntry = new DataEntry(null, null);
+            Workflow wf = new Workflow();
+            DataEntry dataEntry = new DataEntry(wf, obj);
             obj.add_DB(dataEntry);
             assertTrue(obj.retrieve_DB(0) != null);
              System.out.println("RETRIEVE TEST PASS");
