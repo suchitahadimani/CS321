@@ -1,4 +1,3 @@
-package CS321.src.main;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
