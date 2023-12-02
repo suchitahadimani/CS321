@@ -1,20 +1,72 @@
+import java.util.ArrayList;
+
+
 public class Workflow {
-    private int currentStep;
 
-    public int getCurrentStep() {
-        return currentStep;
+    //create a table variable
+    ArrayList<Integer> table;
+
+    //constructor to initialze the table
+    public Workflow()
+    {
+        table = new ArrayList<>();
     }
 
-    public void setCurrentStep(int currentStep) {
-        this.currentStep = currentStep;
+    //get the size of the table
+    public int getSize()
+    {
+        return table.size();
     }
 
-    public int getNext(int currentStep) {
-        //until we giure out how to implement this
-        return currentStep + 1;
+    //get the table
+    public ArrayList<Integer> getTable()
+    {
+        return table;
     }
 
-    public boolean hasNext(int currentStep) {
-        return true;
+    //main method
+    public static void main(String[] args)
+    {
+        //create a workflow table
+        Workflow immigrantTable = new Workflow();
+       
+        //create a business object
+        Business business = new Business();
+        
+        //create a temporary DataEntry variable
+        DataEntry temp = new DataEntry(immigrantTable, business);
+
+        //do while loop to keep going until the user presses quit
+        while(!temp.getQuit())
+        {
+            if(temp.getSubmit())
+            {
+                temp = new DataEntry(immigrantTable, business);
+            }
+        }
+
+        //create an approval object
+        Approval approval = new Approval(business, immigrantTable.getTable().get(0));
+
+        //if there is another business object
+        while(immigrantTable.getTable().size() > 0)
+        {
+
+            //if the user submitted whether or not they accepted or rejected the applicant
+            if(approval.canNext())
+            {
+                //remove the top item to move through the workflow
+                immigrantTable.getTable().remove(0);
+                
+                if(immigrantTable.getTable().size() == 0)
+                    break;
+                
+                approval = new Approval(business, immigrantTable.getTable().get(0));
+            }
+
+            
+        }
+
     }
+
 }
